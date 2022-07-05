@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "packageManager": "yarn@3.2.1",
+  "private": true,
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "dependencies": {
+    "use-headless": "portal:../"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  }
+}
