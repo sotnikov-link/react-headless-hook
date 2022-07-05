@@ -1,0 +1,5 @@
+{
+  // https://github.com/standard/ts-standard
+  "extends": "./tsconfig",
+  "include": ["example", "src"]
+}
