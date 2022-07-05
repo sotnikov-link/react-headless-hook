@@ -1,0 +1,10 @@
+{
+  // Based on:
+  // https://github.com/bitjson/typescript-starter/blob/v3.1.2/tsconfig.module.json
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "target": "ES2019", // Node 15+ https://node.green/#ES2019
+    "outDir": "dist/module",
+    "module": "ES6"
+  }
+}
