@@ -3,8 +3,7 @@
   "packageManager": "yarn@3.2.1",
   "private": true,
   "scripts": {
-    "start": "yarn parcel src/index.html",
-    "parcel": "parcel --no-autoinstall"
+    "start": "next dev"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -12,9 +11,10 @@
     "use-headless": "workspace:^"
   },
   "devDependencies": {
+    "@types/node": "^18.0.1",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.6",
-    "parcel": "^2.6.2",
+    "next": "^12.2.0",
     "typescript": "^4.7.4"
   }
 }

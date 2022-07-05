@@ -1,6 +1,10 @@
 {
+  "extends": "../tsconfig",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "jsx": "react"
-  },
-  "extends": "../tsconfig"
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": true
+  }
 }

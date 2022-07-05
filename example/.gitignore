@@ -1,4 +1,4 @@
-### Parcel
+### Next
 
-.parcel-cache/
-dist/
+/.swc/
+/.next/

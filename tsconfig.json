@@ -37,7 +37,8 @@
     "sourceMap": true,
     "declarationMap": true,
     "removeComments": true,
-    "preserveWatchOutput": true
+    "preserveWatchOutput": true,
+    "isolatedModules": true
   },
 
   "exclude": ["node_modules"],
