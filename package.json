@@ -11,20 +11,11 @@
     "example": "yarn ws example start",
     "dev": "yarn ws use-headless watch",
     "ws": "yarn workspace",
-    "lint": "ts-standard",
     "vscode": "yarn dlx @yarnpkg/sdks vscode"
   },
   "devDependencies": {
     "@types/prettier": "^2.6.3",
     "prettier": "^2.7.1",
-    "ts-standard": "^11.0.0",
     "typescript": "^4.7.4"
-  },
-  "ts-standard": {
-    "report": "stylish",
-    "files": [
-      "lib/src",
-      "example/src"
-    ]
   }
 }

@@ -1,5 +1,6 @@
 {
   "extends": "../tsconfig",
+  "files": ["src/index.ts"],
   "compilerOptions": {
     "target": "ES5",
     "outDir": "dist/main",

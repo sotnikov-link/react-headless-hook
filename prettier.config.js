@@ -1,13 +1,12 @@
 /** @type {import('prettier').Config} */
 module.exports = {
-  singleQuote: true, // for ts-standard
-  semi: false, // for ts-standard
+  singleQuote: true,
   overrides: [
     {
-      files: "*.md",
+      files: '*.md',
       options: {
-        proseWrap: "always",
+        proseWrap: 'always',
       },
     },
   ],
-};
+}
