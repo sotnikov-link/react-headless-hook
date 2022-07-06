@@ -1,0 +1,5 @@
+# Yarn
+/.pnp.*
+/.yarn/*
+/lib/dist/
+/example/.next/

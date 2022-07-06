@@ -1,3 +1,3 @@
-import { a } from 'use-headless'
+import { a } from 'use-headless';
 
-export default () => <>{a}</>
+export default () => a;
