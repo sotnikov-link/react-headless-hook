@@ -7,18 +7,20 @@
     "example"
   ],
   "scripts": {
-    "prepare": "yarn lint && yarn ws use-headless prepare",
-    "example": "yarn ws example start",
-    "dev": "yarn ws use-headless watch",
-    "check": "yarn format-check && yarn lint-check",
-    "fix": "yarn format-fix && yarn lint-fix",
+    "prepare": "run-p -l check lib-prepare && echo prepared",
+    "start": "run-p -l lib-start example-start",
+    "lib": "yarn workspace use-headless",
+    "lib-prepare": "yarn lib prepare",
+    "lib-start": "yarn lib start",
+    "example-start": "yarn workspace example start",
+    "check": "run-p -l format-check lint-check",
+    "fix": "run-p -l format-fix lint-fix",
     "format": "prettier --ignore-unknown ./ '!**/{.,}*.{js,tsx}'",
     "format-check": "yarn format --check",
     "format-fix": "yarn format --write",
-    "lint-check": "eslint --color --max-warnings 0 --ext .js,.tsx ./ && echo 'ESLint: OK'",
+    "lint-check": "eslint --color --max-warnings 0 --ext .js,.tsx ./",
     "lint-fix": "yarn lint-check --fix",
-    "ws": "yarn workspace",
-    "vscode": "yarn dlx @yarnpkg/sdks vscode"
+    "sdks": "yarn dlx @yarnpkg/sdks"
   },
   "devDependencies": {
     "@types/prettier": "^2.6.3",
@@ -35,6 +37,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^43.0.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   }

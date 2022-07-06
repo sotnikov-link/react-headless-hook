@@ -2,6 +2,7 @@
   "extends": "../tsconfig",
   "files": ["src/index.tsx"],
   "compilerOptions": {
+    "jsx": "react",
     "target": "ES5",
     "outDir": "dist/main",
     "module": "commonjs",

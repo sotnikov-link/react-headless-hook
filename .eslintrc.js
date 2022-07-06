@@ -144,7 +144,11 @@ module.exports = {
       parserOptions: {
         // tsconfigRootDir: __dirname, // maybe need in the future
         sourceType: 'module',
-        project: ['./tsconfig.json'],
+        project: [
+          './tsconfig.json',
+          './lib/tsconfig.json',
+          './example/tsconfig.json',
+        ],
         ecmaFeatures: {
           jsx: true,
         },

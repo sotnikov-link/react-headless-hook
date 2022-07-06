@@ -1,12 +1,11 @@
 # Storybook Configs
-
-# https://github.com/eslint/eslint/issues/8429#issuecomment-355967308
-
+# https://github.com/eslint/eslint/issues/8429#issuecomment-35596730
 # !.storybook/
 
-/.pnp.\*
+/.pnp.cjs
+/.pnp.loader.mjs
 /.yarn
 /.vscode
-/lib/dist/
-/example/.next/
-/example/.swc/
+/lib/dist
+/example/.next
+/example/.swc

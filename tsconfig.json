@@ -1,6 +1,10 @@
 {
+  "include": ["lib/src", "example/src"],
+  "exclude": ["**/node_modules/**"],
+
   // Based on:
   // https://github.com/bitjson/typescript-starter/blob/v3.1.2/tsconfig.json
+  "compileOnSave": false,
   "compilerOptions": {
     "incremental": true,
     "target": "ESNext",
@@ -39,8 +43,5 @@
     "removeComments": true,
     "preserveWatchOutput": true,
     "isolatedModules": true
-  },
-
-  "exclude": ["node_modules"],
-  "compileOnSave": false
+  }
 }
