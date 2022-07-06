@@ -1,3 +1,5 @@
 import { a } from 'use-headless';
 
-export default () => a;
+const Index = () => <>{a}</>;
+
+export default Index;
