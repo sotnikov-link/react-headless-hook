@@ -1,5 +1,12 @@
 {
   "name": "use-headless",
+  "description": "Hook or Types for React Headless Components",
+  "keywords": [
+    "react",
+    "hook",
+    "headless",
+    "typescript"
+  ],
   "packageManager": "yarn@3.2.1",
   "version": "0.1.0",
   "source": "src/index.ts",
