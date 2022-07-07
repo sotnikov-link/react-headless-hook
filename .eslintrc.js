@@ -125,21 +125,6 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'prettier', // must be last
       ],
-      settings: {
-        'import/parsers': {
-          '@typescript-eslint/parser': ['.tsx'],
-        },
-        'import/resolver': {
-          typescript: {
-            alwaysTryTypes: true,
-            project: [
-              './tsconfig.json',
-              './lib/tsconfig.json',
-              './example/tsconfig.json',
-            ],
-          },
-        },
-      },
       parser: '@typescript-eslint/parser',
       parserOptions: {
         // tsconfigRootDir: __dirname, // maybe need in the future
