@@ -217,7 +217,7 @@ module.exports = {
           /env/i,
 
           // Allow to use React-terms
-          /props/i,
+          /props?/i,
           /ref/i,
         ],
       },
