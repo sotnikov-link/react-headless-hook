@@ -239,6 +239,7 @@ module.exports = {
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict',
         'prettier', // must be last
       ],
       parser: '@typescript-eslint/parser',
@@ -260,6 +261,8 @@ module.exports = {
         // PropTypes isn't needed for TypeScript
         // https://github.com/eslint/eslint/issues/13284
         'react/prop-types': 'off',
+
+        '@typescript-eslint/array-type': ['warn', { default: 'generic' }],
 
         // https://typescript-eslint.io/rules/lines-between-class-members/
         'lines-between-class-members': 'off',
