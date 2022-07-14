@@ -156,6 +156,7 @@ module.exports = {
     'react-hooks',
     'jsx-a11y',
     'import',
+    'unused-imports',
     'only-warn', // errors for tsc, warns for format
     ...jsDoc.plugins,
     'prettier',
@@ -175,6 +176,18 @@ module.exports = {
     ...overPrettierRules,
     ...organizeImportsRules,
     ...jsDoc.rules,
+
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      // Maybe for the future
+      // {
+      //   vars: 'all',
+      //   varsIgnorePattern: '^_',
+      //   args: 'after-used',
+      //   argsIgnorePattern: '^_',
+      // },
+    ],
 
     'lines-between-class-members': linesBetweenClassMembers,
 
@@ -244,7 +257,7 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        // tsconfigRootDir: __dirname, // maybe need in the future
+        // tsconfigRootDir: __dirname, // maybe for the future
         sourceType: 'module',
         project: [
           './tsconfig.json',
@@ -261,6 +274,9 @@ module.exports = {
         // PropTypes isn't needed for TypeScript
         // https://github.com/eslint/eslint/issues/13284
         'react/prop-types': 'off',
+
+        // We use eslint-plugin-unused-imports
+        '@typescript-eslint/no-unused-vars': 'off',
 
         '@typescript-eslint/array-type': ['warn', { default: 'generic' }],
 
