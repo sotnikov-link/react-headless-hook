@@ -1,8 +1,8 @@
 import { memo, StrictMode } from 'react';
-import { ExampleList } from '../containers/ExampleList';
 import { Button } from '../public/components/Button';
 import { AsLink } from '../public/examples/AsLink';
 import { Empty } from '../public/examples/Empty';
+import { ExampleList } from '../utils/ExampleList';
 
 const Index = memo(() => {
   return (
