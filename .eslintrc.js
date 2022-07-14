@@ -2,6 +2,7 @@
 
 // All Rules without conflicts with Prettier
 
+const imports = require('./eslint/imports');
 const jsDoc = require('./eslint/jsDoc');
 
 /**
@@ -16,54 +17,6 @@ const overPrettierRules = {
       // allowMultilines: true, // will be added next versions
     },
   ],
-
-  // Block Comments only for JSDoc
-
-  'spaced-comment': ['warn', 'always', { block: { balanced: true } }],
-
-  'multiline-comment-style': ['warn', 'separate-lines'],
-
-  // lines-around-comment doesn't work with Prettier:
-  // https://github.com/Shopify/web-configs/pull/319
-};
-
-/**
- * ESLint Rules for "Organize Imports" as in TypeScript and VS Code
- *
- * - https://dev.to/tonyhicks20/automatically-organize-imports-dmj
- * - https://devblogs.microsoft.com/typescript/announcing-typescript-2-8-2/#organize-imports
- * - https://www.npmjs.com/package/prettier-plugin-organize-imports
- *
- * @type {import('eslint').Linter.BaseConfig['rules']}
- */
-const organizeImportsRules = {
-  'import/order': [
-    'warn',
-    {
-      alphabetize: {
-        order: 'asc',
-        caseInsensitive: true,
-      },
-    },
-  ],
-
-  // sort-imports is needed for «memberSort»
-  // because import/order doesn't know to do it
-  'sort-imports': [
-    'warn',
-    {
-      ignoreMemberSort: false,
-      ignoreCase: true,
-
-      // Others aren't needed for us
-      ignoreDeclarationSort: true,
-    },
-  ],
-
-  /**
-   * Don't forget part of padding-line-between-statements
-   * @see {paddingLineBetweenStatements}
-   */
 };
 
 /**
@@ -152,21 +105,22 @@ const paddingLineBetweenStatements = [
 module.exports = {
   env: { browser: true, es2021: true },
   plugins: [
-    'react',
-    'react-hooks',
-    'jsx-a11y',
-    'import',
-    'unused-imports',
-    'only-warn', // errors for tsc, warns for format
-    ...jsDoc.plugins,
-    'prettier',
+    ...new Set([
+      'react',
+      'react-hooks',
+      'jsx-a11y',
+      ...imports.plugins,
+      'only-warn', // errors for tsc, warns for format
+      ...jsDoc.plugins,
+      'prettier',
+    ]),
   ],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:import/recommended',
+    imports.extends,
     'plugin:unicorn/recommended',
     'plugin:prettier/recommended',
     'prettier', // must be last
@@ -174,20 +128,8 @@ module.exports = {
   settings: { react: { version: require('react/package.json').version } },
   rules: {
     ...overPrettierRules,
-    ...organizeImportsRules,
+    ...imports.rules,
     ...jsDoc.rules,
-
-    'unused-imports/no-unused-imports': 'warn',
-    'unused-imports/no-unused-vars': [
-      'warn',
-      // Maybe for the future
-      // {
-      //   vars: 'all',
-      //   varsIgnorePattern: '^_',
-      //   args: 'after-used',
-      //   argsIgnorePattern: '^_',
-      // },
-    ],
 
     'lines-between-class-members': linesBetweenClassMembers,
 

@@ -35,6 +35,15 @@ module.exports = {
   plugins: ['regex'],
 
   rules: {
+    // Block Comments only for JSDoc
+
+    'spaced-comment': ['warn', 'always', { block: { balanced: true } }],
+
+    'multiline-comment-style': ['warn', 'separate-lines'],
+
+    // lines-around-comment doesn't work with Prettier:
+    // https://github.com/typescript-eslint/typescript-eslint/issues/1150
+
     'regex/invalid': [
       'warn',
       [
