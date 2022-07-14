@@ -1,37 +1,48 @@
 import { ComponentType, memo, useEffect, useState } from 'react';
+import { getTextOrError } from './getTextOrError';
 
-export interface OneExampleProps {
-  directory: string;
-  file: string;
+interface OneExampleProps {
+  id: string;
   component: ComponentType;
+  file?: string;
 }
 
 export const OneExample = memo<OneExampleProps>(
-  ({ directory, file, component: Component }) => {
-    const name = Component.displayName ?? '';
-
-    const [code, setCode] = useState('');
+  ({ id, component: Component, file }) => {
+    const [source, setSource] = useState<string>();
 
     useEffect(() => {
-      fetch([directory, file].join('/') + '.tsx')
-        .then((response) => response.text())
-        .then((text) => setCode(text))
-        .catch((error) => {
-          setCode('/*\nError\n\n' + String(error) + '\n*/');
-        });
-    }, [directory, file]);
+      if (file) {
+        fetch(file)
+          .then(getTextOrError)
+          .then((text) => setSource(text))
+          .catch((error) => setSource(['ERROR', '', String(error)].join('\n')));
+      }
+    }, [file]);
 
     return (
       <>
-        <h3>{name}</h3>
+        <h3>{id}</h3>
 
-        <h4>Render</h4>
+        {file && (
+          <>
+            <pre>{file}</pre>
 
-        <Component />
+            <h4>Render</h4>
+          </>
+        )}
 
-        <h4>Code</h4>
+        <div>
+          <Component />
+        </div>
 
-        <pre>{code}</pre>
+        {file && (
+          <>
+            <h4>Code</h4>
+
+            <pre>{source}</pre>
+          </>
+        )}
       </>
     );
   }

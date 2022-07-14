@@ -9,8 +9,8 @@ export const useButton = getHeadlessHook<'onClick' | 'style', ButtonOwnProps>(
   ({ ref, onClick, style, kind = 'simple' }) => {
     const handleClick = useCallback<NonNullable<typeof onClick>>(
       (event) => {
-        // https://typescript-eslint.io/rules/prefer-optional-chain/
         onClick?.(event); // if external onClick exists
+        // https://typescript-eslint.io/rules/prefer-optional-chain/
 
         kind === 'alert' && window.alert('boom');
       },
