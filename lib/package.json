@@ -25,7 +25,7 @@
     "prepare-module": "tsc --project tsconfig.module.json",
     "start": "run-p -l 'prepare-* --watch'",
     "clean": "rm -rf dist",
-    "preversion": "yarn clean && yarn prepare"
+    "prepack": "yarn clean && yarn prepare"
   },
   "dependencies": {
     "react": ">=16"
