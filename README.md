@@ -3,5 +3,5 @@
 ## Installation
 
 ```bash
-npm install use-headless # yarn add use-headless
+npm install react-headless-hook # yarn add react-headless-hook
 ```

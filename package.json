@@ -1,5 +1,5 @@
 {
-  "name": "use-headless-root",
+  "name": "react-headless-hook-root",
   "packageManager": "yarn@3.2.1",
   "private": true,
   "workspaces": [
@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "run-p -l check lib-prepare && echo prepared",
     "start": "run-p -l lib-start example-start",
-    "lib": "yarn workspace use-headless",
+    "lib": "yarn workspace react-headless-hook",
     "lib-prepare": "yarn lib prepare",
     "lib-start": "yarn lib start",
     "example-start": "yarn workspace example start",

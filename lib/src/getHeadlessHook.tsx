@@ -131,7 +131,7 @@ export type HeadlessOutput<
   R extends T['refValue']
 > = Output<T['propKeys'], T['element'], R>;
 
-export function useHeadless<
+export function getHeadlessHook<
   /**
    * Keys of Base Props which are needed for headless component.
    * Here without Ref: because ref can be always and this doesn't need

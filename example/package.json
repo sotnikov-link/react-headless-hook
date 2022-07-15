@@ -8,7 +8,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "use-headless": "workspace:^"
+    "react-headless-hook": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^18.0.1",

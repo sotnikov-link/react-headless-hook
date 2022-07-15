@@ -1,2 +1,2 @@
 export { passRef } from './passRef';
-export { useHeadless } from './useHeadless';
+export { getHeadlessHook } from './getHeadlessHook';

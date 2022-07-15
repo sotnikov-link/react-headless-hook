@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, forwardRef, useCallback } from 'react';
-import { useHeadless as getHeadlessHook } from 'use-headless';
+import { getHeadlessHook } from 'react-headless-hook';
 
 export interface ButtonOwnProps {
   kind?: 'simple' | 'alert';

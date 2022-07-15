@@ -2555,8 +2555,8 @@ __metadata:
     next: ^12.2.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-headless-hook: "workspace:^"
     typescript: ^4.7.4
-    use-headless: "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -4927,6 +4927,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-headless-hook-root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-headless-hook-root@workspace:."
+  dependencies:
+    "@types/node": ^18.0.3
+    "@types/prettier": ^2.6.3
+    "@typescript-eslint/eslint-plugin": ^5.30.5
+    "@typescript-eslint/parser": ^5.30.5
+    eslint: ^8.19.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-node: ^0.3.6
+    eslint-import-resolver-typescript: ^3.2.4
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jest: ^26.5.3
+    eslint-plugin-jsx-a11y: ^6.6.0
+    eslint-plugin-only-warn: ^1.0.3
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.30.1
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-regex: ^1.9.0
+    eslint-plugin-unicorn: ^43.0.0
+    eslint-plugin-unused-imports: ^2.0.0
+    jest: ^28.1.2
+    npm-run-all: ^4.1.5
+    prettier: ^2.7.1
+    react: ^18.2.0
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
+"react-headless-hook@workspace:^, react-headless-hook@workspace:lib":
+  version: 0.0.0-use.local
+  resolution: "react-headless-hook@workspace:lib"
+  dependencies:
+    "@types/react": ">=16"
+    npm-run-all: ^4.1.5
+    react: ">=16"
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -5851,47 +5892,6 @@ __metadata:
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
   languageName: node
   linkType: hard
-
-"use-headless-root@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "use-headless-root@workspace:."
-  dependencies:
-    "@types/node": ^18.0.3
-    "@types/prettier": ^2.6.3
-    "@typescript-eslint/eslint-plugin": ^5.30.5
-    "@typescript-eslint/parser": ^5.30.5
-    eslint: ^8.19.0
-    eslint-config-prettier: ^8.5.0
-    eslint-import-resolver-node: ^0.3.6
-    eslint-import-resolver-typescript: ^3.2.4
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jest: ^26.5.3
-    eslint-plugin-jsx-a11y: ^6.6.0
-    eslint-plugin-only-warn: ^1.0.3
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: ^7.30.1
-    eslint-plugin-react-hooks: ^4.6.0
-    eslint-plugin-regex: ^1.9.0
-    eslint-plugin-unicorn: ^43.0.0
-    eslint-plugin-unused-imports: ^2.0.0
-    jest: ^28.1.2
-    npm-run-all: ^4.1.5
-    prettier: ^2.7.1
-    react: ^18.2.0
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
-
-"use-headless@workspace:^, use-headless@workspace:lib":
-  version: 0.0.0-use.local
-  resolution: "use-headless@workspace:lib"
-  dependencies:
-    "@types/react": ">=16"
-    npm-run-all: ^4.1.5
-    react: ">=16"
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
 
 "use-sync-external-store@npm:1.1.0":
   version: 1.1.0
