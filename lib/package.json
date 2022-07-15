@@ -29,7 +29,7 @@
     "prepack": "yarn clean && yarn prepare && cp ../README.md ./",
     "postpack": "rm ./README.md"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": ">=16"
   },
   "devDependencies": {
