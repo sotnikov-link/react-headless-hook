@@ -127,7 +127,7 @@ export type HeadlessInput<
 
 export type HeadlessOutput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  T extends Headless<any>,
+  T extends Headless<any>, // wip
   R extends T['refValue']
 > = Output<T['propKeys'], T['element'], R>;
 

@@ -7,7 +7,7 @@ export const CustomOnClick = memo(() => (
       alert('Click by ' + event.currentTarget.tagName);
     }}
   >
-    {CustomOnClick.displayName}
+    CustomOnClick
   </Button>
 ));
 
