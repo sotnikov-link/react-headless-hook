@@ -3,9 +3,15 @@
   "description": "Hook or Types for React Headless Components",
   "keywords": [
     "react",
-    "hook",
     "headless",
-    "typescript"
+    "hook",
+    "typescript",
+    "types"
+  ],
+  "files": [
+    "src/**",
+    "dist/main/**",
+    "dist/module/**"
   ],
   "packageManager": "yarn@3.2.1",
   "version": "0.1.0",
@@ -17,7 +23,9 @@
     "prepare": "run-p -l 'prepare-*' && echo prepared",
     "prepare-es5cjs": "tsc",
     "prepare-module": "tsc --project tsconfig.module.json",
-    "start": "run-p -l 'prepare-* --watch'"
+    "start": "run-p -l 'prepare-* --watch'",
+    "clean": "rm -rf dist",
+    "preversion": "yarn clean && yarn prepare"
   },
   "dependencies": {
     "react": ">=16"
