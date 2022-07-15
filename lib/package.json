@@ -32,8 +32,7 @@
     "prepare-module": "tsc --project tsconfig.module.json",
     "start": "run-p -l 'prepare-* --watch'",
     "clean": "rm -rf dist",
-    "prepack": "yarn clean && yarn prepare && cp ../README.md ./",
-    "postpack": "rm ./README.md"
+    "prepack": "yarn clean && yarn prepare"
   },
   "peerDependencies": {
     "react": ">=16"
