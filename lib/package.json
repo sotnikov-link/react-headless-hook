@@ -11,10 +11,11 @@
   "files": [
     "src/**",
     "dist/main/**",
-    "dist/module/**"
+    "dist/module/**",
+    "README.md"
   ],
   "packageManager": "yarn@3.2.1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "source": "src/index.ts",
   "types": "dist/main/index.d.ts",
   "main": "dist/main/index.js",
@@ -25,7 +26,8 @@
     "prepare-module": "tsc --project tsconfig.module.json",
     "start": "run-p -l 'prepare-* --watch'",
     "clean": "rm -rf dist",
-    "prepack": "yarn clean && yarn prepare"
+    "prepack": "yarn clean && yarn prepare && cp ../README.md ./",
+    "postpack": "rm ./README.md"
   },
   "dependencies": {
     "react": ">=16"
