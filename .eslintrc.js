@@ -1,103 +1,15 @@
 // @ts-check
 
-// All Rules without conflicts with Prettier
-
+const emptyLines = require('./eslint/emptyLines');
 const imports = require('./eslint/imports');
 const jsDoc = require('./eslint/jsDoc');
 
-/**
- * Over Prettier Rules
- * @type {import('eslint').Linter.BaseConfig['rules']}
- */
-const overPrettierRules = {
-  'react/jsx-newline': [
-    'warn',
-    {
-      prevent: false,
-      // allowMultilines: true, // will be added next versions
-    },
-  ],
+// Additional Prettier rules without conflicts
+const additionalPrettierRules = {
+  ...imports.rules,
+  ...jsDoc.rules,
+  ...emptyLines.rules,
 };
-
-/**
- * lines-between-class-members
- * @see https://eslint.org/docs/latest/rules/lines-between-class-members
- * @type {import('eslint').Linter.RuleEntry}
- */
-const linesBetweenClassMembers = [
-  'warn',
-  'always',
-  { exceptAfterSingleLine: true },
-];
-
-/**
- * padding-line-between-statements
- * @see https://eslint.org/docs/latest/rules/padding-line-between-statements
- * @type {import('eslint').Linter.RuleEntry}
- */
-const paddingLineBetweenStatements = [
-  'warn',
-
-  // Separated Import Group for organizeImportsRules
-  { blankLine: 'always', prev: '*', next: 'import' },
-  { blankLine: 'always', prev: 'import', next: '*' },
-  { blankLine: 'never', prev: 'import', next: 'import' },
-
-  // Separated Export Group
-  { blankLine: 'always', prev: '*', next: 'export' },
-  { blankLine: 'always', prev: 'export', next: '*' },
-  { blankLine: 'any', prev: 'export', next: 'export' },
-
-  // Separated Singleline Variable Group
-  { blankLine: 'always', prev: '*', next: 'singleline-var' },
-  { blankLine: 'always', prev: 'singleline-var', next: '*' },
-  { blankLine: 'any', prev: 'singleline-var', next: 'singleline-var' },
-  { blankLine: 'always', prev: '*', next: 'singleline-let' },
-  { blankLine: 'always', prev: 'singleline-let', next: '*' },
-  { blankLine: 'any', prev: 'singleline-let', next: 'singleline-let' },
-  { blankLine: 'always', prev: '*', next: 'singleline-const' },
-  { blankLine: 'always', prev: 'singleline-const', next: '*' },
-  { blankLine: 'any', prev: 'singleline-const', next: 'singleline-const' },
-
-  // Always Before
-  {
-    blankLine: 'always',
-    prev: '*',
-    next: [
-      'break',
-      'throw',
-      'return',
-      'directive',
-      'multiline-expression',
-
-      // equals to 'try', 'class', 'switch', 'function'
-      'block-like',
-
-      // switch-case
-      'case',
-      'default',
-
-      // multiline variable group
-      'multiline-var',
-      'multiline-let',
-      'multiline-const',
-    ],
-  },
-
-  // Always After
-  {
-    blankLine: 'always',
-    prev: [
-      'directive',
-      'block-like',
-      'multiline-var',
-      'multiline-let',
-      'multiline-const',
-      'multiline-expression',
-    ],
-    next: '*',
-  },
-];
 
 /**
  * @type {import('eslint').Linter.BaseConfig}
@@ -109,6 +21,7 @@ module.exports = {
       'react',
       'react-hooks',
       'jsx-a11y',
+      ...emptyLines.plugins,
       ...imports.plugins,
       'only-warn', // errors for tsc, warns for format
       ...jsDoc.plugins,
@@ -116,26 +29,22 @@ module.exports = {
     ]),
   ],
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
-    imports.extends,
-    'plugin:unicorn/recommended',
-    'plugin:prettier/recommended',
-    'prettier', // must be last
+    ...new Set([
+      'eslint:recommended',
+      'plugin:react/recommended',
+      'plugin:react-hooks/recommended',
+      'plugin:jsx-a11y/recommended',
+      ...imports.extends,
+      'plugin:unicorn/recommended',
+      'plugin:prettier/recommended',
+      'prettier', // must be last
+    ]),
   ],
   settings: { react: { version: require('react/package.json').version } },
   rules: {
-    ...overPrettierRules,
-    ...imports.rules,
-    ...jsDoc.rules,
+    ...additionalPrettierRules,
 
-    'lines-between-class-members': linesBetweenClassMembers,
-
-    'padding-line-between-statements': paddingLineBetweenStatements,
-
-    'react/button-has-type': 'warn', // many don't know that default is submit
+    'react/button-has-type': 'warn', // because default is submit
 
     'react/react-in-jsx-scope': 'off', // tsconfig.json defines JSX imports
 
@@ -211,7 +120,7 @@ module.exports = {
         },
       },
       rules: {
-        ...overPrettierRules,
+        ...additionalPrettierRules,
 
         // PropTypes isn't needed for TypeScript
         // https://github.com/eslint/eslint/issues/13284
@@ -224,30 +133,29 @@ module.exports = {
 
         // https://typescript-eslint.io/rules/lines-between-class-members/
         'lines-between-class-members': 'off',
-        '@typescript-eslint/lines-between-class-members': [
-          ...linesBetweenClassMembers,
-          { exceptAfterOverload: true },
-        ],
+        '@typescript-eslint/lines-between-class-members':
+          emptyLines.extendLinesBetweenClassMembers({
+            exceptAfterOverload: true,
+          }),
 
         // https://typescript-eslint.io/rules/padding-line-between-statements
         'padding-line-between-statements': 'off',
-        '@typescript-eslint/padding-line-between-statements': [
-          ...paddingLineBetweenStatements,
+        '@typescript-eslint/padding-line-between-statements':
+          emptyLines.extendsPaddingLineBetweenStatements([
+            // Always Before
+            {
+              blankLine: 'always',
+              prev: '*',
+              next: ['type', 'interface'],
+            },
 
-          // Always Before
-          {
-            blankLine: 'always',
-            prev: '*',
-            next: ['type', 'interface'],
-          },
-
-          // Always After
-          {
-            blankLine: 'always',
-            prev: ['type', 'interface'],
-            next: '*',
-          },
-        ],
+            // Always After
+            {
+              blankLine: 'always',
+              prev: ['type', 'interface'],
+              next: '*',
+            },
+          ]),
       },
     },
 
@@ -264,7 +172,7 @@ module.exports = {
         'jest/globals': true,
       },
       rules: {
-        ...overPrettierRules,
+        ...additionalPrettierRules,
 
         // You should turn the original rule off only for test files
         '@typescript-eslint/unbound-method': 'off',
